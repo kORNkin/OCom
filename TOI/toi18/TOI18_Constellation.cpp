@@ -1,6 +1,6 @@
 /*
 Author: kornkin.png
-Algor: Quick sum + DP(cnr)
+Algor: Quick sum + Cnr(Math)  //But Cnr(DP) is faster
 */
 #include<bits/stdc++.h>
 using namespace std;
