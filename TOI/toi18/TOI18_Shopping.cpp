@@ -10,7 +10,6 @@ int ne_qs[500010];
 
 void bs(int l,int r,int x)
 {
-    //cout << l << "  "<< r << " " << x << "\n";
     if(l>n || r>n){
         i=n-1;
         return;
@@ -51,12 +50,7 @@ int main()
             ne_qs[i]=-a;
         }
     }
-    /*for(i=0;i<n;i++)
-        cout << po_qs[i] << " ";
-    cout<<"\n";
-    for(i=0;i<n;i++)
-        cout << ne_qs[i] << " ";
-    cout<<"\n";*/
+
     while(m--){
         cin>>a>>b;
         bs(a+1,n,b);
