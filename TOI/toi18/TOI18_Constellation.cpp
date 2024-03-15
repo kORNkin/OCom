@@ -27,32 +27,23 @@ ll cnr(ll sum, ll kk){
     int mx = max(kk, sum-kk);
     int mn = min(kk, sum-kk);
     bitset<701> vis(0);
-    //cout << "cnr: " << sum << "," << kk << " = ";
+
     for(int i = mx+1; i<=sum; i++){
         a *= i;
         a%=mod;
     }
     for(int j = 2; j <= mn; j++){
-        //b *= j;
+
         a *= poww(j,mod-2)%mod;
         a %= mod;
     }
-    //if(b > 1)b = poww(b,mod-2)%mod;
-    //cout << "cnr: " << sum << "," << kk << "-->" << a << " / " << b << " = "<< a << '\n';
+
     return dp[sum][kk] = (ull)(a)%mod;
 }
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-
-    /*fac[0] = 1;
-    for(int i = 1; i <= 700; i++){
-        fac[i] = fac[i-1]*i;
-        fac[i] %= mod;
-        cout << i << " :" << fac[i] << '\n';
-    }*/
-
     cin >> r >> c >> kk;
     k = r + c;
     r += k;
@@ -77,24 +68,10 @@ int main(){
             else tr[i][j] = tr[i-1][j+1]; 
         }
     }
-
-    /*for(int i = 1; i <= r + k ;i++){
-        for(int j = 1; j <= c + k;j++){
-            cout << tl[i][j] << ' ' ;
-        } cout << '\n';
-    }
-
-    cout << '\n';
-
-    for(int i = 1; i <= r + k ;i++){
-        for(int j = 1; j <= c + k;j++){
-            cout << tr[i][j] << ' ';
-        } cout << '\n';
-    }*/
-
+    
     ll ans = 0;
     for(int l = 1; l <= r + c - k - k - 1; l++){
-        ///cout << "---" << l << "---\n";
+
         for(int x = k + 1; x <= r; x++){
             for(int y = k + 1; y <= c; y++){
                 ll sum = 0;
@@ -102,7 +79,6 @@ int main(){
                 sum += tl[x][y + l] - tl[x- l -1][y-1];
                 sum += tr[x-1][y- l +1] - tr[x - l][y];
                 sum += tr[x+ l -1][y + 1] - tr[x][y + l];
-                //cout << sum << ' ';
 
                 if(sum == kk) ans++;
                 else if(sum > kk) {
@@ -110,7 +86,7 @@ int main(){
                     else ans += cnr(sum,kk);
                 }
                 ans%=mod;
-            } //cout << '\n';
+            } 
         }
     }
 
